@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.4
+
+### Patch Changes
+
+- 526c1c6: Add BlogContent element
+
 ## 0.0.3
 
 ### Patch Changes
