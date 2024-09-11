@@ -13,14 +13,16 @@
   "scripts": {
     "dev": "astro dev",
     "test": "astro check",
-    "check": "astro check"
+    "check": "astro check",
+    "publish": "npm publish --access public"
   },
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.5.9"
+    "@astrojs/check": "^0.5.9",
+    "@changesets/cli": "^2.27.8"
   },
   "peerDependencies": {
     "astro": "^4.5.5",
