@@ -1,0 +1,38 @@
+{
+  "name": "@stoati/astro",
+  "version": "0.0.1",
+  "description": "A component library built for Astro",
+  "homepage": "https://stoati.fr",
+  "license": "MIT",
+  "author": "Stoati https://stoati.fr",
+  "repository": "github:@stoati/astro",
+  "keywords": [
+    "astro",
+    "stoati"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "test": "astro check",
+    "check": "astro check"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.5.9"
+  },
+  "peerDependencies": {
+    "astro": "^4.5.5",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.6.2",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "typescript": "^5.4.3"
+  }
+}

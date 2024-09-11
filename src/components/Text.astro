@@ -1,0 +1,15 @@
+---
+import { findTextAttribute } from "../tools/dataGetter";
+import stoatiDecode from "../tools/decodeFullCode";
+import getElement from "../tools/getElement";
+
+const {code} = Astro.props
+
+const {templateCode, templateAttributeCode} = stoatiDecode(code)
+
+const data = await getElement(templateCode);
+
+const name = findTextAttribute(data[0].data, templateAttributeCode);
+---
+
+{name?.data.text}
