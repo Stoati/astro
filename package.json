@@ -14,7 +14,7 @@
     "dev": "astro dev",
     "test": "astro check",
     "check": "astro check",
-    "publish": "npm publish --access public"
+    "publish": "changeset version && changeset publish"
   },
   "type": "module",
   "exports": {
