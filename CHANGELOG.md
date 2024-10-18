@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.6
+
+### Patch Changes
+
+- 91dc2b0: Begin adding live component
+
 ## 0.0.5
 
 ### Patch Changes
