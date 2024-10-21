@@ -12,9 +12,9 @@ const fetchDataAndSet =
 
     const response = await getElement(templateCode);
 
-    const text = findMarkdownAttribute(response[0].data, elementCode);
+    const markdown = findMarkdownAttribute(response[0].data, elementCode);
 
-    setData(text?.data.markdown ?? "");
+    setData(markdown?.data.markdown ?? "");
   };
 
 export default function LiveMarkdown({ code }: { code: string }) {
@@ -30,7 +30,7 @@ export default function LiveMarkdown({ code }: { code: string }) {
 
       socket.on("componentChange", function (data) {
         if (data) {
-          fetchData(code);
+          setData(data);
         }
       });
     }

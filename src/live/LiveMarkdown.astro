@@ -4,4 +4,4 @@ import LiveMarkdownReact from "./LiveMarkdown";
 const { code } = Astro.props;
 ---
 
-<LiveMarkdownReact code={code} />
+<LiveMarkdownReact code={code} client:load />
