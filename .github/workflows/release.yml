@@ -29,6 +29,12 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Replace import.meta.env.PUBLIC_STOATI_URL with value
+        env:
+          STOATI_URL: ${{ secrets.STOATI_URL }}
+        run: |
+          find . -type f -exec sed -i "s/import\.meta\.env\.PUBLIC_STOATI_URL/${STOATI_URL}/g" {} +
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1

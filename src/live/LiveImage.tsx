@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import getElement from "../tools/getElement";
-import { findMarkdownAttribute } from "../tools/dataGetter";
+import { findAssetAttribute } from "../tools/dataGetter";
 import socket, { useSocketStatus } from "../tools/stoatiSocket";
-import ReactMarkdown from "react-markdown";
 
 const fetchDataAndSet =
   (setData: (data: string) => void) => async (code: string) => {
@@ -12,9 +11,9 @@ const fetchDataAndSet =
 
     const response = await getElement(templateCode);
 
-    const text = findMarkdownAttribute(response[0].data, elementCode);
+    const asset = findAssetAttribute(response[0].data, elementCode);
 
-    setData(text?.data.markdown ?? "");
+    setData(asset?.data.url ?? "");
   };
 
 export default function LiveMarkdown({

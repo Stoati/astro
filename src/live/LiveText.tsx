@@ -29,7 +29,7 @@ export default function LiveText({ code }: { code: string }) {
 
       socket.on("componentChange", function (data) {
         if (data) {
-          fetchData(code);
+          setData(data);
         }
       });
     }
