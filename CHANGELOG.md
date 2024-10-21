@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.10
+
+### Patch Changes
+
+- 0eb5493: Fix live client load
+
 ## 0.0.9
 
 ### Patch Changes
