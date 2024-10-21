@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.9
+
+### Patch Changes
+
+- 85a373c: Add all live
+
 ## 0.0.8
 
 ### Patch Changes
