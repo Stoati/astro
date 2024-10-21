@@ -1,0 +1,5 @@
+---
+"@stoati/astro": patch
+---
+
+Bip
