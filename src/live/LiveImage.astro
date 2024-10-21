@@ -1,0 +1,21 @@
+---
+import LiveImageReact from "./LiveImage";
+
+interface Props {
+  code: string;
+  alt?: string;
+  className?: string;
+  width?: number;
+  height?: number;
+}
+
+const { code, alt, className, width, height } = Astro.props;
+---
+
+<LiveImageReact
+  code={code}
+  alt={alt}
+  className={className}
+  width={width}
+  height={height}
+/>

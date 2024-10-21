@@ -1,14 +1,37 @@
 import { z } from "astro/zod";
 import { Attribute } from "./types";
 
+function checkAndGetLiveSecret() {
+  if (globalThis.window) {
+    const searchParams = new URLSearchParams(window.location.search);
+
+    const liveSecret = searchParams.get("liveSecret");
+
+    if (liveSecret) {
+      sessionStorage.setItem("liveSecret", liveSecret);
+      return liveSecret;
+    }
+
+    const sessionSecret = sessionStorage.getItem("liveSecret");
+
+    if (sessionSecret) {
+      return sessionSecret;
+    }
+  }
+
+  return import.meta.env.STOATI_SECRET;
+}
+
 export default async function getElement(elementCode: string) {
+  const secret = checkAndGetLiveSecret();
+
   const response = await fetch(
     `${import.meta.env.PUBLIC_STOATI_URL}/shops/${
       import.meta.env.PUBLIC_STOATI_ID
     }/products?productTemplateCode=${elementCode}&withData=true`,
     {
       headers: {
-        authorization: `Bearer ${import.meta.env.STOATI_SECRET}`,
+        authorization: `Bearer ${secret}`,
       },
     }
   );
