@@ -1,22 +1,43 @@
-import { useQuery } from "@tanstack/react-query";
-import stoatiDecode from "../tools/decodeFullCode";
+import { useCallback, useEffect, useState } from "react";
 import getElement from "../tools/getElement";
 import { findTextAttribute } from "../tools/dataGetter";
+import socket, { useSocketStatus } from "../tools/stoatiSocket";
 
-const LiveText = ({ code }: { code: string }) => {
-  const { data } = useQuery({
-    queryKey: ["Text", code],
-    queryFn: async () => {
-      const { templateCode, templateAttributeCode } = stoatiDecode(code);
+const fetchDataAndSet =
+  (setData: (data: string) => void) => async (code: string) => {
+    const templateCode = code.split("#")[0];
 
-      const data = await getElement(templateCode);
+    const elementCode = code.split("#")[1];
 
-      const name = findTextAttribute(data[0].data, templateAttributeCode);
+    const response = await getElement(templateCode);
 
-      return name;
-    },
+    const text = findTextAttribute(response[0].data, elementCode);
+
+    setData(text?.data.text ?? "");
+  };
+
+export default function LiveText({ code }: { code: string }) {
+  const [data, setData] = useState<any>(null);
+
+  const socketStatus = useSocketStatus();
+
+  const fetchData = useCallback(fetchDataAndSet(setData), [setData]);
+
+  useEffect(() => {
+    if (socketStatus === "connected") {
+      socket.emit("subscribeToComponentChange", { code });
+
+      socket.on("componentChange", function (data) {
+        if (data) {
+          fetchData(code);
+        }
+      });
+    }
   });
 
+  useEffect(() => {
+    fetchData(code);
+  }, []);
+
   return data;
-};
-export default LiveText;
+}
