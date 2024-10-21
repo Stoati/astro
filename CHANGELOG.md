@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.12
+
+### Patch Changes
+
+- 42e34b2: Directly modify stoati url
+
 ## 0.0.11
 
 ### Patch Changes
