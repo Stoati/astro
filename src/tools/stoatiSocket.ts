@@ -11,7 +11,7 @@ const socketStatusAtom = atom<SocketStatus>(SocketStatus.enum.disconnected);
 
 export const useSocketStatus = () => useStore(socketStatusAtom);
 
-const socket = io(import.meta.env.PUBLIC_STOATI_URL);
+const socket = io("https://api.stoati.fr");
 socket.on("connect", function () {
   socketStatusAtom.set(SocketStatus.enum.connected);
 });

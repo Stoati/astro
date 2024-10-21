@@ -26,7 +26,7 @@ export default async function getElement(elementCode: string) {
   const secret = checkAndGetLiveSecret();
 
   const response = await fetch(
-    `${import.meta.env.PUBLIC_STOATI_URL}/shops/${
+    `https://api.stoati.fr/shops/${
       import.meta.env.PUBLIC_STOATI_ID
     }/products?productTemplateCode=${elementCode}&withData=true`,
     {
