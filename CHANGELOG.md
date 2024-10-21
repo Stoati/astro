@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.8
+
+### Patch Changes
+
+- 562c015: Fix LiveText
+
 ## 0.0.7
 
 ### Patch Changes
