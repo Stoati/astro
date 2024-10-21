@@ -6,3 +6,5 @@ export { default as Markdown } from "./components/Markdown/Markdown.astro";
 export { default as Image } from "./components/Image/Image.astro";
 export { default as BlogContent } from "./components/BlogContent/BlogContent.astro";
 export { default as LiveText } from "./live/LiveText.astro";
+export { default as LiveMarkdown } from "./live/LiveMarkdown.astro";
+export { default as LiveImage } from "./live/LiveImage.astro";
