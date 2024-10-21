@@ -28,7 +28,7 @@ export default function LiveMarkdown({ code }: { code: string }) {
     if (socketStatus === "connected") {
       socket.emit("subscribeToComponentChange", { code });
 
-      socket.on("componentChange", function (data) {
+      socket.on("componentChange_" + code, function (data) {
         if (data) {
           setData(data);
         }
