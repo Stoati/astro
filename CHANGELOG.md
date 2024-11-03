@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.15
+
+### Patch Changes
+
+- 29df6d6: Add prose to markdown and liveId to getElement
+
 ## 0.0.14
 
 ### Patch Changes
