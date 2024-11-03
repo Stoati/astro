@@ -4,13 +4,13 @@ import stoatiDecode from "../../tools/decodeFullCode";
 import getElement from "../../tools/getElement";
 import ReactMarkdown from "react-markdown";
 
-const {code} = Astro.props
+const { code } = Astro.props;
 
-const {templateCode, templateAttributeCode} = stoatiDecode(code)
+const { templateCode, templateAttributeCode } = stoatiDecode(code);
 
 const data = await getElement(templateCode);
 
 const value = findMarkdownAttribute(data[0].data, templateAttributeCode);
 ---
 
-<ReactMarkdown>{value?.data.markdown ?? ""}</ReactMarkdown>
+<p class="prose"><ReactMarkdown>{value?.data.markdown ?? ""}</ReactMarkdown></p>
