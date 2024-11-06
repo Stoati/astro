@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import getElement from "../tools/getElement";
+import { getLiveElement } from "../tools/getElement";
 import { findAssetAttribute } from "../tools/dataGetter";
 import socket, { useSocketStatus } from "../tools/stoatiSocket";
 
@@ -9,7 +9,7 @@ const fetchDataAndSet =
 
     const elementCode = code.split("#")[1];
 
-    const response = await getElement(templateCode);
+    const response = await getLiveElement(templateCode);
 
     const asset = findAssetAttribute(response[0].data, elementCode);
 
