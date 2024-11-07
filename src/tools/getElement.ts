@@ -24,7 +24,7 @@ function checkAndGetStoatiId() {
 
 export default async function getElement(elementCode: string) {
   const response = await fetch(
-    `https://api.stoati.fr/shops/${
+    `https://api.stoati.fr/public/shops/${
       import.meta.env.PUBLIC_STOATI_ID
     }/data/${elementCode}`
   );
@@ -50,7 +50,7 @@ export async function getLiveElement(elementCode: string) {
   const id = checkAndGetStoatiId();
 
   const response = await fetch(
-    `https://api.stoati.fr/shops/${id}/data/${elementCode}`
+    `https://api.stoati.fr/public/shops/${id}/data/${elementCode}`
   );
 
   if (!response.ok) {
