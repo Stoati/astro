@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import getElement from "../tools/getElement";
+import { getLiveElement } from "../tools/getElement";
 import { findMarkdownAttribute } from "../tools/dataGetter";
 import socket, { useSocketStatus } from "../tools/stoatiSocket";
 import ReactMarkdown from "react-markdown";
@@ -10,7 +10,7 @@ const fetchDataAndSet =
 
     const elementCode = code.split("#")[1];
 
-    const response = await getElement(templateCode);
+    const response = await getLiveElement(templateCode);
 
     const markdown = findMarkdownAttribute(response[0].data, elementCode);
 
