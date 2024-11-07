@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.16
+
+### Patch Changes
+
+- 4112ce0: Differentiate live element and use /data public endpoint
+
 ## 0.0.15
 
 ### Patch Changes
