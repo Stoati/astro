@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.17
+
+### Patch Changes
+
+- 1bd7942: Fix url for getting data
+
 ## 0.0.16
 
 ### Patch Changes
