@@ -8,3 +8,4 @@ export { default as BlogContent } from "./components/BlogContent/BlogContent.ast
 export { default as LiveText } from "./live/LiveText.astro";
 export { default as LiveMarkdown } from "./live/LiveMarkdown.astro";
 export { default as LiveImage } from "./live/LiveImage.astro";
+export { default as ContactForm } from "./components/ContactForm/ContactForm.astro";
