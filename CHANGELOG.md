@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.18
+
+### Patch Changes
+
+- ffa873d: Add ContactForm
+
 ## 0.0.17
 
 ### Patch Changes
