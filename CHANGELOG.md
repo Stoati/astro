@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.21
+
+### Patch Changes
+
+- eb2bf81: Remove tailwind, create ContactForm without style and hook to manage ContactForm
+
 ## 0.0.20
 
 ### Patch Changes
