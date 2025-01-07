@@ -1,6 +1,7 @@
+import { useRef } from "react";
 import Altcha from "../Altcha/Altcha";
-import "./ContactForm.css";
 import useContactForm from "./useContactForm";
+import "./ContactForm.css";
 
 export default function ContactForm({
   classNames,
@@ -16,6 +17,8 @@ export default function ContactForm({
   };
 }) {
   const { form, onSubmit, isSent, isSentDisabled } = useContactForm();
+
+  const ref = useRef<HTMLInputElement>(null);
 
   if (isSent) {
     return (
@@ -57,13 +60,13 @@ export default function ContactForm({
         />
       </div>
       <Altcha
+        ref={ref}
         onValueChange={(val) => {
           form.setValue("challenge", val);
         }}
       />
-      <button className={classNames?.button} disabled={isSentDisabled}>
-        Envoyer
-      </button>
+
+      <button className={classNames?.button}>Envoyer</button>
     </form>
   );
 }
