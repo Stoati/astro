@@ -46,16 +46,13 @@ const Altcha = forwardRef<{ value: string | null }, AltchaProps>(
 
     /* Configure your `challengeurl` and remove the `test` attribute, see docs: https://altcha.org/docs/website-integration/#using-altcha-widget  */
     return (
-      //@ts-expect-error
       <altcha-widget
         ref={widgetRef}
         style={{
           "--altcha-max-width": "100%",
         }}
         challengeurl={"https://api.stoati.fr/challenges"}
-      >
-        {/* @ts-expect-error */}
-      </altcha-widget>
+      ></altcha-widget>
     );
   }
 );
