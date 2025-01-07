@@ -1,63 +1,23 @@
-import { useForm, useWatch } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "astro/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
-import checkAndGetStoatiId from "../../tools/checkAndGetStoatiId";
-import Altcha from "@/components/Altcha/Altcha";
+import Altcha from "../Altcha/Altcha";
+import "./ContactForm.css";
+import useContactForm from "./useContactForm";
 
-const FormSchema = z.object({
-  title: z.string(),
-  content: z.string(),
-  challenge: z.any(),
-});
-
-export default function ContactForm() {
-  const [messageSent, setMessageSent] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      title: "",
-      content: "",
-      challenge: null,
-    },
-  });
-
-  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-    const response = await fetch(
-      `https://api.stoati.fr/shops/${checkAndGetStoatiId()}/messages`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...data,
-          data: "",
-          type: "Contact",
-        }),
-      }
-    );
-
-    if (response.ok) {
-      setMessageSent(true);
-    }
+export default function ContactForm({
+  classNames,
+  disableDefaultStyle,
+}: {
+  disableDefaultStyle?: boolean;
+  classNames?: {
+    form?: string;
+    label?: string;
+    input?: string;
+    labelInputContainer?: string;
+    button?: string;
   };
+}) {
+  const { form, onSubmit, isSent, isSentDisabled } = useContactForm();
 
-  const challenge = useWatch({ control: form.control, name: "challenge" });
-
-  if (messageSent) {
+  if (isSent) {
     return (
       <div className="max-w-md w-full space-y-6 flex flex-col items-center justify-stretch">
         Merci pour ce message !!
@@ -66,60 +26,44 @@ export default function ContactForm() {
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          return form.handleSubmit(onSubmit)();
+    <form
+      onSubmit={onSubmit}
+      id="stoati-contact-form"
+      className={
+        disableDefaultStyle
+          ? classNames?.form
+          : "stoati-contact-form " + classNames?.form
+      }
+    >
+      <div className={classNames?.labelInputContainer}>
+        <label htmlFor="title" className={classNames?.label}>
+          Titre
+        </label>
+        <input
+          type="text"
+          id="title"
+          className={classNames?.input}
+          {...form.register("title")}
+        />
+      </div>
+      <div className={classNames?.labelInputContainer}>
+        <label htmlFor="message" className={classNames?.label}>
+          Message
+        </label>
+        <textarea
+          id="message"
+          {...form.register("title")}
+          className={classNames?.label}
+        />
+      </div>
+      <Altcha
+        onValueChange={(val) => {
+          form.setValue("challenge", val);
         }}
-        className="max-w-md w-full space-y-6 flex flex-col items-center justify-stretch"
-      >
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>Titre</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="content"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>Message</FormLabel>
-              <FormControl>
-                <Textarea {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="challenge"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Altcha
-                  onValueChange={(val) => {
-                    field.onChange(val);
-                  }}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button disabled={challenge === null}>Envoyer</Button>
-      </form>
-    </Form>
+      />
+      <button className={classNames?.button} disabled={isSentDisabled}>
+        Envoyer
+      </button>
+    </form>
   );
 }
