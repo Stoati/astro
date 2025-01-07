@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.23
+
+### Patch Changes
+
+- 7f5317e: Fix altcha
+
 ## 0.0.22
 
 ### Patch Changes
