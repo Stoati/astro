@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.19
+
+### Patch Changes
+
+- b818615: Add ContactForm to export
+
 ## 0.0.18
 
 ### Patch Changes
