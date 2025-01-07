@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.20
+
+### Patch Changes
+
+- 534956c: Fix link to global css
+
 ## 0.0.19
 
 ### Patch Changes
