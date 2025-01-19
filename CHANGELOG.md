@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.24
+
+### Patch Changes
+
+- 1ebc2d3: Add Schedule types
+
 ## 0.0.23
 
 ### Patch Changes
