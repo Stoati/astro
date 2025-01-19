@@ -210,10 +210,7 @@ export const convertToAssetData = (data: Attribute) => {
 export const convertToScheduleData = (data: Attribute) => {
   if (data.type !== "schedule") {
     console.error("Stoati: Given data doesn't have the good type (schedule)");
-    return {
-      ...data,
-      data: { schedule: null },
-    };
+    return null;
   }
 
   const parseResult = Schedule.safeParse(data.data);
@@ -223,10 +220,5 @@ export const convertToScheduleData = (data: Attribute) => {
   }
 
   console.error("Stoati: Schedule data parsing failed");
-  return {
-    ...data,
-    data: {
-      schedule: null,
-    },
-  };
+  return null;
 };
