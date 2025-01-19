@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.25
+
+### Patch Changes
+
+- b54adbc: Fix convertToScheduleData
+
 ## 0.0.24
 
 ### Patch Changes
