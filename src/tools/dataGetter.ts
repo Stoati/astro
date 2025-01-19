@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Attribute } from "./types";
+import { Schedule } from "./ScheduleTypes";
 
 export const findTextAttribute = (
   data: Attribute[],
@@ -40,6 +41,19 @@ export const findAssetAttribute = (
   }
 
   return convertToAssetData(found);
+};
+
+export const findScheduleAttribute = (
+  elements: Attribute[],
+  templateAttributeCode: string
+) => {
+  const attribute = findAttribute(elements, templateAttributeCode);
+
+  if (!attribute) {
+    return null;
+  }
+
+  return convertToScheduleData(attribute);
 };
 
 export const findAttribute = (
@@ -189,6 +203,30 @@ export const convertToAssetData = (data: Attribute) => {
     ...data,
     data: {
       url: "",
+    },
+  };
+};
+
+export const convertToScheduleData = (data: Attribute) => {
+  if (data.type !== "schedule") {
+    console.error("Stoati: Given data doesn't have the good type (schedule)");
+    return {
+      ...data,
+      data: { schedule: null },
+    };
+  }
+
+  const parseResult = Schedule.safeParse(data.data);
+
+  if (parseResult.success) {
+    return parseResult.data;
+  }
+
+  console.error("Stoati: Schedule data parsing failed");
+  return {
+    ...data,
+    data: {
+      schedule: null,
     },
   };
 };
