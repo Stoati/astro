@@ -1,5 +1,7 @@
 ---
-import { default as ReactGeolocation } from "./Geolocation";
+import { findGeolocationData } from "../../tools/dataGetter";
+import getElement from "../../tools/getElement";
+import Map from "../Map/Map";
 interface Props {
   code: string;
   addressClass?: string;
@@ -13,12 +15,24 @@ const {
   containerClass = ".stoatiDefaultContainerClass",
   mapContainerClass = ".stoatiDefaultMapContainerClass",
 } = Astro.props;
+
+const element = await getElement(code);
+
+const schedule = findGeolocationData(element[0].data, "schedule");
 ---
 
-<ReactGeolocation
-  code={code}
-  addressClass={addressClass}
-  containerClass={containerClass}
-  mapContainerClass={mapContainerClass}
-  client:only
-/>
+{
+  schedule ? (
+    <div class={containerClass}>
+      <span class={addressClass}>{schedule[0].address}</span>
+      <Map
+        lat={schedule[0].lat}
+        lon={schedule[0].lon}
+        mapContainerClass={mapContainerClass}
+        client:only="react"
+      />
+    </div>
+  ) : (
+    <span>Aucune information est disponible</span>
+  )
+}
