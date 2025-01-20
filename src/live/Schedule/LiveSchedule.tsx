@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { getLiveElement } from "../../tools/getElement";
-import {
-  convertToScheduleData,
-  findAssetAttribute,
-  findScheduleAttribute,
-} from "../../tools/dataGetter";
+import { findScheduleAttribute } from "../../tools/dataGetter";
 import socket, { useSocketStatus } from "../../tools/stoatiSocket";
 import type { Schedule } from "../../tools/ScheduleTypes";
 
@@ -43,8 +39,6 @@ export default function LiveSchedule({ code }: { code: string }) {
   useEffect(() => {
     fetchData(code);
   }, []);
-
-  console.log(import.meta.env.VITE_PUBLIC_STOATI_ID);
 
   if (!data) {
     return <span>Aucune information est disponible</span>;
