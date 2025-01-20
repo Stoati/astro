@@ -1,6 +1,5 @@
 ---
-import { default as ReactLiveMap } from "./LiveMap";
-
+import { default as ReactGeolocation } from "./Geolocation";
 interface Props {
   code: string;
   addressClass?: string;
@@ -16,28 +15,10 @@ const {
 } = Astro.props;
 ---
 
-<ReactLiveMap
+<ReactGeolocation
   code={code}
-  containerClass={containerClass}
   addressClass={addressClass}
+  containerClass={containerClass}
   mapContainerClass={mapContainerClass}
   client:only
 />
-
-<style>
-  .stoatiDefaultAddressClass {
-    font: bold;
-    font-size: large;
-  }
-
-  .stoatiDefaultContainerClass {
-    display: flex;
-    flex-direction: column;
-    gap: 2;
-  }
-
-  .stoatiDefaultMapContainerClass {
-    width: 500px;
-    height: 500px;
-  }
-</style>

@@ -12,5 +12,5 @@ export { default as ContactForm } from "./components/ContactForm/ContactForm.ast
 export { default as useContactForm } from "./components/ContactForm/useContactForm";
 export { default as LiveSchedule } from "./live/Schedule/LiveSchedule.astro";
 export { default as Schedule } from "./components/Schedule/Schedule.astro";
-export { default as LiveMap } from "./live/Map/LiveMap.astro";
-export { default as Map } from "./components/Map/Map.astro";
+export { default as LiveGeolocation } from "./live/Geolocation/LiveGeolocation.astro";
+export { default as Geolocation } from "./components/Geolocation/Geolocation.astro";
