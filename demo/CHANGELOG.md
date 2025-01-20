@@ -1,5 +1,12 @@
 # demo
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [c17f6ab]
+  - @stoati/astro@0.0.31
+
 ## 0.0.2
 
 ### Patch Changes

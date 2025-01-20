@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.31
+
+### Patch Changes
+
+- c17f6ab: Bump
+
 ## 0.0.29
 
 ### Patch Changes

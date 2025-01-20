@@ -1,5 +1,0 @@
----
-"@stoati/astro": patch
----
-
-Bump
