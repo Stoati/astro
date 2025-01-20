@@ -1,28 +1,33 @@
 ---
+import { findGeolocationData } from "../../tools/dataGetter";
+import getElement from "../../tools/getElement";
+
 interface Props {
-  latitude: string;
-  longitude: string;
-  zoom: number;
-  containerId: string;
+  code: string;
   containerClass?: string;
 }
 
-const {
-  latitude,
-  longitude,
-  zoom,
-  containerId,
-  containerClass = "baseLeafletContainer",
-} = Astro.props;
+const { code, containerClass } = Astro.props;
+
+const element = await getElement(code);
+
+const loc = findGeolocationData(element[0].data, "schedule");
 ---
 
-<leaflet-map
-  data-latitude={latitude}
-  data-longitude={longitude}
-  data-zoom={zoom}
-  data-container={containerId}></leaflet-map>
+{
+  loc ? (
+    <leaflet-map
+      data-latitude={loc[0].lat}
+      data-longitude={loc[0].lon}
+      data-zoom={17}
+      data-container={"StoatiMap"}
+    />
+  ) : (
+    <span />
+  )
+}
 
-<div id={containerId} class={containerClass}></div>
+<div id={"StoatiMap"} class={containerClass}></div>
 <script>
   import "leaflet/dist/leaflet";
   import "leaflet/dist/leaflet.css";
