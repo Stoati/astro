@@ -1,5 +1,13 @@
 # @stoati/astro
 
+## 0.0.29
+
+### Patch Changes
+
+- 52044c8: Add github action
+- 6cda423: Fake change to trigger publish
+- 7b68444: Test changeset with new repo org
+
 ## 0.0.28
 
 ### Patch Changes
