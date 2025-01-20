@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.26
+
+### Patch Changes
+
+- bf3c98a: Add Schedule and Map element with Live version
+
 ## 0.0.25
 
 ### Patch Changes

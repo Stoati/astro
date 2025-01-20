@@ -1,6 +1,6 @@
 {
   "name": "@stoati/astro",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "A component library built for Astro",
   "homepage": "https://stoati.fr",
   "license": "MIT",
