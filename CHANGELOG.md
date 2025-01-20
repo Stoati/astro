@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.28
+
+### Patch Changes
+
+- 2c21aa0: Rename Map component to Geolocation and use React for Map render
+
 ## 0.0.27
 
 ### Patch Changes
