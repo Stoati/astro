@@ -3,5 +3,9 @@
     "workspaces": [
         "demo",
         "packages/*"
-    ]
+    ],
+    "scripts": {
+        "changeset": "changeset",
+        "publish": "changeset version && changeset publish"
+    }
 }
