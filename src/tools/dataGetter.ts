@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { Attribute } from "./types";
 import { Schedule } from "./ScheduleTypes";
+import { ProductAttributeGeolocationData } from "./GeolocationTypes";
 
 export const findTextAttribute = (
   data: Attribute[],
@@ -54,6 +55,19 @@ export const findScheduleAttribute = (
   }
 
   return convertToScheduleData(attribute);
+};
+
+export const findGeolocationData = (
+  elements: Attribute[],
+  templateAttributeCode: string
+) => {
+  const attribute = findAttribute(elements, templateAttributeCode);
+
+  if (!attribute) {
+    return null;
+  }
+
+  return convertToGeolocationData(attribute);
 };
 
 export const findAttribute = (
@@ -220,5 +234,27 @@ export const convertToScheduleData = (data: Attribute) => {
   }
 
   console.error("Stoati: Schedule data parsing failed");
+  return null;
+};
+
+export const convertToGeolocationData = (data: Attribute) => {
+  if (data.type !== "geolocation") {
+    console.error(
+      "Stoati: Given data doesn't have the good type (geolocation)"
+    );
+    return null;
+  }
+
+  console.log(data);
+
+  const parseResult = z
+    .array(ProductAttributeGeolocationData)
+    .safeParse(data.data);
+
+  if (parseResult.success) {
+    return parseResult.data;
+  }
+
+  console.error("Stoati: geolocation data parsing failed");
   return null;
 };

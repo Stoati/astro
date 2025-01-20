@@ -16,7 +16,11 @@ function checkAndGetStoatiId() {
     }
   }
 
-  return import.meta.env.PUBLIC_STOATI_ID;
+  console.log(import.meta.env);
+
+  return import.meta.env.STORYBOOK === "true"
+    ? import.meta.env.VITE_PUBLIC_STOATI_ID
+    : import.meta.env.PUBLIC_STOATI_ID;
 }
 
 export default checkAndGetStoatiId;
