@@ -1,6 +1,6 @@
 {
   "name": "@stoati/astro",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "A component library built for Astro",
   "homepage": "https://stoati.fr",
   "license": "MIT",
@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.5.9",
-    "@changesets/cli": "^2.27.8",
     "tailwindcss": "^3.4.17"
   },
   "peerDependencies": {
