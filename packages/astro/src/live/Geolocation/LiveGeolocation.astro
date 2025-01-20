@@ -1,0 +1,44 @@
+---
+import ReactLiveGeolocation from "./LiveGeolocation";
+
+interface Props {
+  code: string;
+  addressClass?: string;
+  containerClass?: string;
+  mapContainerClass?: string;
+}
+
+const {
+  code,
+  addressClass = "stoatiDefaultAddressClass",
+  containerClass = "stoatiDefaultContainerClass",
+  mapContainerClass = "stoatiDefaultMapContainerClass",
+} = Astro.props;
+---
+
+<ReactLiveGeolocation
+  code={code}
+  containerClass={containerClass}
+  addressClass={addressClass}
+  mapContainerClass={mapContainerClass}
+  client:only="react"
+/>
+
+<style is:global>
+  .stoatiDefaultAddressClass {
+    font: bold;
+    font-size: large;
+  }
+
+  .stoatiDefaultContainerClass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stoatiDefaultMapContainerClass {
+    width: 500px;
+    height: 400px;
+  }
+</style>

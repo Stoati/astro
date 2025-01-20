@@ -1,0 +1,11 @@
+---
+import ReactLiveSchedule from "./LiveSchedule";
+
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+---
+
+<ReactLiveSchedule code={code} client:only />

@@ -1,0 +1,7 @@
+---
+import LiveMarkdownReact from "./LiveMarkdown";
+
+const { code } = Astro.props;
+---
+
+<p class="prose"><LiveMarkdownReact code={code} client:load /></p>

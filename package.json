@@ -1,0 +1,7 @@
+{
+    "name": "stoati-astro",
+    "workspaces": [
+        "demo",
+        "packages/*"
+    ]
+}

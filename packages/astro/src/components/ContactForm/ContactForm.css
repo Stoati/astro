@@ -1,0 +1,22 @@
+.stoati-contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.stoati-contact-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stoati-contact-form div input {
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.stoati-contact-form div textarea {
+  padding: 8px;
+  border: 1px solid black;
+}

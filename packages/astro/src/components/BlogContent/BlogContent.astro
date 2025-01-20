@@ -1,0 +1,29 @@
+---
+
+import { findAssetAttribute, findMarkdownAttribute, findTextAttribute } from "../../tools/dataGetter";
+import getElement from "../../tools/getElement";
+import BlogContentReact from "./BlogContent";
+
+interface Props {
+    code:string
+}
+
+const {code} = Astro.props
+
+const element = await getElement(code);
+
+const blogposts = element.map((item) => {
+  const asset = findAssetAttribute(item.data, "mainAsset");
+  const content = findMarkdownAttribute(item.data, "content");
+  const title = findTextAttribute(item.data, "title");
+
+  return {
+    title: title?.data.text ?? "",
+    illustrationUrl: asset?.data.url ?? "",
+    content: content?.data.markdown ?? "",
+  };
+});
+---
+
+<BlogContentReact client:visible initialData={blogposts} code={code} />
+

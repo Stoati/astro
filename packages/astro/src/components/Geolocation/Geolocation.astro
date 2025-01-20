@@ -1,0 +1,57 @@
+---
+import { findGeolocationData } from "../../tools/dataGetter";
+import getElement from "../../tools/getElement";
+import Map from "../Map/Map";
+interface Props {
+  code: string;
+  addressClass?: string;
+  containerClass?: string;
+  mapContainerClass?: string;
+}
+
+const {
+  code,
+  addressClass = "stoatiDefaultAddressClass",
+  containerClass = "stoatiDefaultContainerClass",
+  mapContainerClass = "stoatiDefaultMapContainerClass",
+} = Astro.props;
+
+const element = await getElement(code);
+
+const geolocation = findGeolocationData(element[0].data, "location");
+---
+
+{
+  geolocation ? (
+    <div class={containerClass}>
+      <span class={addressClass}>{geolocation[0].address}</span>
+      <Map
+        lat={geolocation[0].lat}
+        lon={geolocation[0].lon}
+        mapContainerClass={mapContainerClass}
+        client:only="react"
+      />
+    </div>
+  ) : (
+    <span>Aucune information est disponible</span>
+  )
+}
+
+<style is:global>
+  .stoatiDefaultAddressClass {
+    font: bold;
+    font-size: large;
+  }
+
+  .stoatiDefaultContainerClass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stoatiDefaultMapContainerClass {
+    width: 500px;
+    height: 400px;
+  }
+</style>

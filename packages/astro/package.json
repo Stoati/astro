@@ -1,0 +1,52 @@
+{
+  "name": "@stoati/astro",
+  "version": "0.0.28",
+  "description": "A component library built for Astro",
+  "homepage": "https://stoati.fr",
+  "license": "MIT",
+  "author": "Stoati https://stoati.fr",
+  "repository": "github:@stoati/astro",
+  "keywords": [
+    "astro",
+    "stoati"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "test": "astro check",
+    "check": "astro check",
+    "version": "changeset",
+    "publish": "changeset version && changeset publish"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.5.9",
+    "@changesets/cli": "^2.27.8",
+    "tailwindcss": "^3.4.17"
+  },
+  "peerDependencies": {
+    "astro": "^4.5.5",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.1.5",
+    "@hookform/resolvers": "^3.10.0",
+    "@nanostores/react": "^0.8.0",
+    "@tanstack/react-query": "^5.59.15",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "altcha": "^1.1.0",
+    "leaflet": "^1.9.4",
+    "nanostores": "^0.11.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "react-leaflet": "^4.2.1",
+    "react-markdown": "^9.0.1",
+    "socket.io-client": "^4.8.0",
+    "typescript": "^5.4.3",
+    "zod": "^3.23.8"
+  }
+}
