@@ -1,5 +1,7 @@
 {
     "name": "stoati-astro",
+    "version": "0.0.1",
+    "private": "true",
     "workspaces": [
         "demo",
         "packages/*"
