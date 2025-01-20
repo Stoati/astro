@@ -10,3 +10,7 @@ export { default as LiveMarkdown } from "./live/LiveMarkdown.astro";
 export { default as LiveImage } from "./live/LiveImage.astro";
 export { default as ContactForm } from "./components/ContactForm/ContactForm.astro";
 export { default as useContactForm } from "./components/ContactForm/useContactForm";
+export { default as LiveSchedule } from "./live/Schedule/LiveSchedule.astro";
+export { default as Schedule } from "./components/Schedule/Schedule.astro";
+export { default as LiveMap } from "./live/Map/LiveMap.astro";
+export { default as Map } from "./components/Map/Map.astro";

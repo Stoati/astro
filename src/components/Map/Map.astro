@@ -1,0 +1,66 @@
+---
+interface Props {
+  latitude: string;
+  longitude: string;
+  zoom: number;
+  containerId: string;
+  containerClass?: string;
+}
+
+const {
+  latitude,
+  longitude,
+  zoom,
+  containerId,
+  containerClass = "baseLeafletContainer",
+} = Astro.props;
+---
+
+<leaflet-map
+  data-latitude={latitude}
+  data-longitude={longitude}
+  data-zoom={zoom}
+  data-container={containerId}></leaflet-map>
+
+<div id={containerId} class={containerClass}></div>
+<script>
+  import "leaflet/dist/leaflet";
+  import "leaflet/dist/leaflet.css";
+
+  class LeafletMap extends HTMLElement {
+    constructor() {
+      super();
+
+      const latlng = [
+        Number(this.dataset.latitude),
+        Number(this.dataset.longitude),
+      ];
+
+      //@ts-expect-error
+      var map = L.map(this.dataset.container).setView(
+        latlng,
+        Number(this.dataset.zoom)
+      );
+
+      //@ts-expect-error
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      //@ts-expect-error
+      L.marker([
+        Number(this.dataset.latitude),
+        Number(this.dataset.longitude),
+      ]).addTo(map);
+    }
+  }
+
+  window.customElements.define("leaflet-map", LeafletMap);
+</script>
+
+<style>
+  .baseLeafletContainer {
+    height: 61.8vh;
+  }
+</style>

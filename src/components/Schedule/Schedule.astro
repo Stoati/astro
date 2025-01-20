@@ -1,0 +1,93 @@
+---
+import { findScheduleAttribute } from "../../tools/dataGetter";
+import getElement from "../../tools/getElement";
+
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+
+const element = await getElement(code);
+
+const schedule = findScheduleAttribute(element[0].data, "schedule");
+---
+
+{
+  schedule ? (
+    <div class="flex flex-col gap-4 w-[200px]">
+      <div class="flex gap-4 items-center justify-between">
+        <span class="font-bold">Lundi</span>
+        <div class="flex flex-col gap-2">
+          {schedule.monday.length === 0
+            ? "Fermé"
+            : schedule.monday.map((item) => {
+                return <span>{`${item.start} -${item.stop}`}</span>;
+              })}
+        </div>
+      </div>
+      <div class="flex gap-4 items-center justify-between">
+        <span class="font-bold">Mardi</span>
+        <div class="flex flex-col gap-2">
+          {schedule.tuesday.length === 0
+            ? "Fermé"
+            : schedule.tuesday.map((item) => {
+                return <span>{`${item.start} -${item.stop}`}</span>;
+              })}
+        </div>
+      </div>
+      <div class="flex gap-4 items-center justify-between">
+        <span class="font-bold">Mercredi</span>
+        <div class="flex flex-col gap-2">
+          {schedule.wednesday.length === 0
+            ? "Fermé"
+            : schedule.wednesday.map((item) => {
+                return <span>{`${item.start} -${item.stop}`}</span>;
+              })}
+        </div>
+      </div>
+      <div class="flex gap-4 items-center justify-between">
+        <span class="font-bold">Jeudi</span>
+        <div class="flex flex-col gap-2">
+          {schedule.thursday.length === 0
+            ? "Fermé"
+            : schedule.thursday.map((item) => {
+                return <span>{`${item.start} -${item.stop}`}</span>;
+              })}
+        </div>
+      </div>
+      <div class="flex gap-4 items-center justify-between">
+        <span class="font-bold">Vendredi</span>
+        <div class="flex flex-col gap-2">
+          {schedule.friday.length === 0
+            ? "Fermé"
+            : schedule.friday.map((item) => {
+                return <span>{`${item.start} -${item.stop}`}</span>;
+              })}
+        </div>
+      </div>
+      <div class="flex gap-4 items-center justify-between">
+        <span class="font-bold">Samedi</span>
+        <div class="flex flex-col gap-2">
+          {schedule.saturday.length === 0
+            ? "Fermé"
+            : schedule.saturday.map((item) => {
+                return <span>{`${item.start} -${item.stop}`}</span>;
+              })}
+        </div>
+      </div>
+      <div class="flex gap-4 items-center justify-between">
+        <span class="font-bold">Dimanche</span>
+        <div class="flex flex-col gap-2">
+          {schedule.sunday.length === 0
+            ? "Fermé"
+            : schedule.sunday.map((item) => {
+                return <span>{`${item.start} -${item.stop}`}</span>;
+              })}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <span>Aucune information est disponible</span>
+  )
+}

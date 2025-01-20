@@ -1,0 +1,42 @@
+---
+import { default as ReactLiveMap } from "./LiveMap";
+
+interface Props {
+  code: string;
+  addressClass?: string;
+  containerClass?: string;
+  mapContainerClass?: string;
+}
+
+const {
+  code,
+  addressClass = ".stoatiDefaultAddressClass",
+  containerClass = ".stoatiDefaultContainerClass",
+  mapContainerClass = ".stoatiDefaultMapContainerClass",
+} = Astro.props;
+---
+
+<ReactLiveMap
+  code={code}
+  containerClass={containerClass}
+  addressClass={addressClass}
+  mapContainerClass={mapContainerClass}
+/>
+
+<style>
+  .stoatiDefaultAddressClass {
+    font: bold;
+    font-size: large;
+  }
+
+  .stoatiDefaultContainerClass {
+    display: flex;
+    flex-direction: column;
+    gap: 2;
+  }
+
+  .stoatiDefaultMapContainerClass {
+    width: 500px;
+    height: 500px;
+  }
+</style>
