@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@changesets/cli':
-        specifier: ^2.27.8
+        specifier: ^2.27.11
         version: 2.27.11
 
   demo:
@@ -96,9 +96,6 @@ importers:
       '@astrojs/check':
         specifier: ^0.5.9
         version: 0.5.10(typescript@5.7.3)
-      '@changesets/cli':
-        specifier: ^2.27.8
-        version: 2.27.11
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
@@ -2168,11 +2165,6 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-
   prismjs@1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
     engines: {node: '>=6'}
@@ -3259,7 +3251,7 @@ snapshots:
       fs-extra: 7.0.1
       lodash.startcase: 4.4.0
       outdent: 0.5.0
-      prettier: 2.8.8
+      prettier: 2.8.7
       resolve-from: 5.0.0
       semver: 7.6.3
 
@@ -3387,7 +3379,7 @@ snapshots:
       '@changesets/types': 6.0.0
       fs-extra: 7.0.1
       human-id: 1.0.2
-      prettier: 2.8.8
+      prettier: 2.8.7
 
   '@emmetio/abbreviation@2.3.3':
     dependencies:
@@ -5453,10 +5445,7 @@ snapshots:
       find-yarn-workspace-root2: 1.2.16
       which-pm: 3.0.0
 
-  prettier@2.8.7:
-    optional: true
-
-  prettier@2.8.8: {}
+  prettier@2.8.7: {}
 
   prismjs@1.29.0: {}
 
