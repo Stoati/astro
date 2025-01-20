@@ -3,8 +3,7 @@ import { getLiveElement } from "../../tools/getElement";
 import { findGeolocationData } from "../../tools/dataGetter";
 import socket, { useSocketStatus } from "../../tools/stoatiSocket";
 import type { ProductAttributeGeolocationData } from "../../tools/GeolocationTypes";
-
-import Map from "./Map";
+import Map from "../../components/Map/Map";
 
 const fetchDataAndSet =
   (setData: (data: ProductAttributeGeolocationData[] | null) => void) =>
@@ -20,7 +19,7 @@ const fetchDataAndSet =
     setData(mapData ?? null);
   };
 
-export default function LiveMap({
+export default function LiveGeolocation({
   code,
   containerClass,
   addressClass,

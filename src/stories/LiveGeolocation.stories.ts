@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import LiveMap from "../live/Map/LiveMap";
+import LiveGeolocation from "../live/Geolocation/LiveGeolocation";
 
 const meta = {
-  title: "Live/Map",
-  component: LiveMap,
+  title: "Live/Geolocation",
+  component: LiveGeolocation,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof LiveMap>;
+} satisfies Meta<typeof LiveGeolocation>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
