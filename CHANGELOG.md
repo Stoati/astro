@@ -1,5 +1,11 @@
 # @stoati/astro
 
+## 0.0.27
+
+### Patch Changes
+
+- eb8e32f: Fix Map Component
+
 ## 0.0.26
 
 ### Patch Changes
