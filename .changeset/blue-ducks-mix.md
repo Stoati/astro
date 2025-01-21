@@ -2,4 +2,4 @@
 "@stoati/astro": patch
 ---
 
-Rework again
+Improve Map
