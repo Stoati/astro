@@ -12,7 +12,7 @@ const fetchDataAndSet =
 
     const response = await getLiveElement(templateCode);
 
-    const schedule = findScheduleAttribute(response[0].data, elementCode);
+    const schedule = findScheduleAttribute(response[0], elementCode);
 
     setData(schedule ?? null);
   };

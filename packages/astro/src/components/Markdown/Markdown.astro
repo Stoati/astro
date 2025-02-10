@@ -10,7 +10,7 @@ const { templateCode, templateAttributeCode } = stoatiDecode(code);
 
 const data = await getElement(templateCode);
 
-const value = findMarkdownAttribute(data[0].data, templateAttributeCode);
+const value = findMarkdownAttribute(data[0], templateAttributeCode);
 ---
 
 <p class="prose"><ReactMarkdown>{value?.data.markdown ?? ""}</ReactMarkdown></p>

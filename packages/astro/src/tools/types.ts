@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Attribute = z.object({
+export const ProductAttribute = z.object({
   id: z.string(),
   name: z.string(),
   type: z.string(),
@@ -8,4 +8,15 @@ export const Attribute = z.object({
   data: z.any(),
 });
 
-export type Attribute = z.infer<typeof Attribute>;
+export type ProductAttribute = z.infer<typeof ProductAttribute>;
+
+export const GetProductWithAttributes = z.object({
+  product: z.object({
+    id: z.string(),
+    name: z.string(),
+    templateCode: z.string(),
+  }),
+  attributes: z.array(ProductAttribute),
+});
+
+export type GetProductWithAttributes = z.infer<typeof GetProductWithAttributes>;

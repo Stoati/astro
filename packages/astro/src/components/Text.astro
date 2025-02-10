@@ -13,7 +13,7 @@ const { templateCode, templateAttributeCode } = stoatiDecode(code);
 
 const data = await getElement(templateCode);
 
-const name = findTextAttribute(data[0].data, templateAttributeCode);
+const name = findTextAttribute(data[0], templateAttributeCode);
 ---
 
 {name?.data.text}

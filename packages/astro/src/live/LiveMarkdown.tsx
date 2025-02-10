@@ -12,7 +12,7 @@ const fetchDataAndSet =
 
     const response = await getLiveElement(templateCode);
 
-    const markdown = findMarkdownAttribute(response[0].data, elementCode);
+    const markdown = findMarkdownAttribute(response[0], elementCode);
 
     setData(markdown?.data.markdown ?? "");
   };

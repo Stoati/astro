@@ -10,7 +10,7 @@ const { code } = Astro.props;
 
 const element = await getElement(code);
 
-const schedule = findScheduleAttribute(element[0].data, "schedule");
+const schedule = findScheduleAttribute(element[0], "schedule");
 ---
 
 {
