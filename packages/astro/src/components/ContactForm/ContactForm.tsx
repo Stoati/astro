@@ -16,7 +16,7 @@ export default function ContactForm({
     button?: string;
   };
 }) {
-  const { form, onSubmit, isSent, isSentDisabled } = useContactForm();
+  const { form, onSubmit, isSent } = useContactForm();
 
   const ref = useRef<HTMLInputElement>(null);
 

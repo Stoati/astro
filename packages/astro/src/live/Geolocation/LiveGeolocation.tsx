@@ -14,7 +14,7 @@ const fetchDataAndSet =
 
     const response = await getLiveElement(templateCode);
 
-    const mapData = findGeolocationData(response[0].data, elementCode);
+    const mapData = findGeolocationData(response[0], elementCode);
 
     setData(mapData ?? null);
   };

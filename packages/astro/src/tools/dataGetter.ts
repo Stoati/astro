@@ -1,14 +1,13 @@
 import { z } from "zod";
-import type { Attribute } from "./types";
 import { Schedule } from "./ScheduleTypes";
 import { ProductAttributeGeolocationData } from "./GeolocationTypes";
-
+import { GetProductWithAttributes, ProductAttribute } from "./types";
 export const findTextAttribute = (
-  data: Attribute[],
+  element: GetProductWithAttributes,
   templateAttributeCode: string,
   locale: "fr-FR" = "fr-FR"
 ) => {
-  const found = findAttribute(data, templateAttributeCode);
+  const found = findAttribute(element, templateAttributeCode);
 
   if (!found) {
     return null;
@@ -18,11 +17,11 @@ export const findTextAttribute = (
 };
 
 export const findMarkdownAttribute = (
-  data: Attribute[],
+  element: GetProductWithAttributes,
   templateAttributeCode: string,
   locale: "fr-FR" = "fr-FR"
 ) => {
-  const found = findAttribute(data, templateAttributeCode);
+  const found = findAttribute(element, templateAttributeCode);
 
   if (!found) {
     return null;
@@ -32,10 +31,10 @@ export const findMarkdownAttribute = (
 };
 
 export const findAssetAttribute = (
-  data: Attribute[],
+  element: GetProductWithAttributes,
   templateAttributeCode: string
 ) => {
-  const found = findAttribute(data, templateAttributeCode);
+  const found = findAttribute(element, templateAttributeCode);
 
   if (!found) {
     return null;
@@ -45,10 +44,10 @@ export const findAssetAttribute = (
 };
 
 export const findScheduleAttribute = (
-  elements: Attribute[],
+  element: GetProductWithAttributes,
   templateAttributeCode: string
 ) => {
-  const attribute = findAttribute(elements, templateAttributeCode);
+  const attribute = findAttribute(element, templateAttributeCode);
 
   if (!attribute) {
     return null;
@@ -58,10 +57,10 @@ export const findScheduleAttribute = (
 };
 
 export const findGeolocationData = (
-  elements: Attribute[],
+  element: GetProductWithAttributes,
   templateAttributeCode: string
 ) => {
-  const attribute = findAttribute(elements, templateAttributeCode);
+  const attribute = findAttribute(element, templateAttributeCode);
 
   if (!attribute) {
     return null;
@@ -71,10 +70,10 @@ export const findGeolocationData = (
 };
 
 export const findAttribute = (
-  data: Attribute[],
+  data: GetProductWithAttributes,
   templateAttributeCode: string
 ) => {
-  const found = data.find(
+  const found = data.attributes.find(
     (item) => item.templateCode === templateAttributeCode
   );
 
@@ -88,7 +87,7 @@ export const findAttribute = (
   return found;
 };
 
-export const convertToTextData = (data: Attribute, locale: "fr-FR") => {
+export const convertToTextData = (data: ProductAttribute, locale: "fr-FR") => {
   if (data.type !== "text") {
     console.error("Stoati: Given data doesn't have the good type (text)");
     return {
@@ -137,7 +136,10 @@ export const convertToTextData = (data: Attribute, locale: "fr-FR") => {
   };
 };
 
-export const convertToMarkdownData = (data: Attribute, locale: "fr-FR") => {
+export const convertToMarkdownData = (
+  data: ProductAttribute,
+  locale: "fr-FR"
+) => {
   if (data.type !== "markdown") {
     console.error("Stoati: Given data doesn't have the good type (markdown)");
     return {
@@ -186,7 +188,7 @@ export const convertToMarkdownData = (data: Attribute, locale: "fr-FR") => {
   };
 };
 
-export const convertToAssetData = (data: Attribute) => {
+export const convertToAssetData = (data: ProductAttribute) => {
   if (data.type !== "asset") {
     console.error("Stoati: Given data doesn't have the good type (asset)");
     return {
@@ -221,7 +223,7 @@ export const convertToAssetData = (data: Attribute) => {
   };
 };
 
-export const convertToScheduleData = (data: Attribute) => {
+export const convertToScheduleData = (data: ProductAttribute) => {
   if (data.type !== "schedule") {
     console.error("Stoati: Given data doesn't have the good type (schedule)");
     return null;
@@ -237,7 +239,7 @@ export const convertToScheduleData = (data: Attribute) => {
   return null;
 };
 
-export const convertToGeolocationData = (data: Attribute) => {
+export const convertToGeolocationData = (data: ProductAttribute) => {
   if (data.type !== "geolocation") {
     console.error(
       "Stoati: Given data doesn't have the good type (geolocation)"

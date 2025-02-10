@@ -11,7 +11,7 @@ const fetchDataAndSet =
 
     const response = await getLiveElement(templateCode);
 
-    const text = findTextAttribute(response[0].data, elementCode);
+    const text = findTextAttribute(response[0], elementCode);
 
     setData(text?.data.text ?? "");
   };

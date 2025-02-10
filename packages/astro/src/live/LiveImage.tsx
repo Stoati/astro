@@ -11,7 +11,7 @@ const fetchDataAndSet =
 
     const response = await getLiveElement(templateCode);
 
-    const asset = findAssetAttribute(response[0].data, elementCode);
+    const asset = findAssetAttribute(response[0], elementCode);
 
     setData(asset?.data.url ?? "");
   };

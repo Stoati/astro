@@ -1,23 +1,32 @@
 ---
-import { findAssetAttribute, findMarkdownAttribute } from "../../tools/dataGetter";
+import {
+  findAssetAttribute,
+  findMarkdownAttribute,
+} from "../../tools/dataGetter";
 import stoatiDecode from "../../tools/decodeFullCode";
 import getElement from "../../tools/getElement";
 
 interface Props {
-	code: string;
-	alt?: string;
-	className?: string;
-    width?: number;
-    height?: number;
+  code: string;
+  alt?: string;
+  className?: string;
+  width?: number;
+  height?: number;
 }
 
-const {code, alt, className, width, height} = Astro.props
+const { code, alt, className, width, height } = Astro.props;
 
-const {templateCode, templateAttributeCode} = stoatiDecode(code)
+const { templateCode, templateAttributeCode } = stoatiDecode(code);
 
 const data = await getElement(templateCode);
 
-const value = findAssetAttribute(data[0].data, templateAttributeCode);
+const value = findAssetAttribute(data[0], templateAttributeCode);
 ---
 
-<img src={value?.data.url} class={className} alt={alt} width={width} height={height}/>
+<img
+  src={value?.data.url}
+  class={className}
+  alt={alt}
+  width={width}
+  height={height}
+/>

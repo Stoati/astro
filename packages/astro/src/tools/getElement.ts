@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Attribute } from "./types";
+import { GetProductWithAttributes } from "./types";
 import checkAndGetStoatiId from "./checkAndGetStoatiId";
 
 export default async function getElement(elementCode: string) {
@@ -15,15 +15,7 @@ export default async function getElement(elementCode: string) {
 
   const json = await response.json();
 
-  return z
-    .array(
-      z.object({
-        id: z.string(),
-        name: z.string(),
-        data: z.array(Attribute),
-      })
-    )
-    .parse(json);
+  return z.array(GetProductWithAttributes).parse(json);
 }
 
 export async function getLiveElement(elementCode: string) {
@@ -39,13 +31,5 @@ export async function getLiveElement(elementCode: string) {
 
   const json = await response.json();
 
-  return z
-    .array(
-      z.object({
-        id: z.string(),
-        name: z.string(),
-        data: z.array(Attribute),
-      })
-    )
-    .parse(json);
+  return z.array(GetProductWithAttributes).parse(json);
 }

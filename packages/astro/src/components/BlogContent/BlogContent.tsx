@@ -17,12 +17,12 @@ const fetchData = async (
     }[]
   ) => void
 ) => {
-  const element = await getElement("blogpost");
+  const element = await getElement(code);
 
   const blogposts = element.map((item) => {
-    const asset = findAssetAttribute(item.data, "mainAsset");
-    const content = findMarkdownAttribute(item.data, "content");
-    const title = findTextAttribute(item.data, "title");
+    const asset = findAssetAttribute(item, "mainAsset");
+    const content = findMarkdownAttribute(item, "content");
+    const title = findTextAttribute(item, "title");
 
     return {
       title: title?.data.text ?? "",
