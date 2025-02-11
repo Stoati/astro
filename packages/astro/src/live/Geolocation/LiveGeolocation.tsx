@@ -6,7 +6,7 @@ import type { ProductAttributeGeolocationData } from "../../tools/GeolocationTyp
 import Map from "../../components/Map/Map";
 
 const fetchDataAndSet =
-  (setData: (data: ProductAttributeGeolocationData[] | null) => void) =>
+  (setData: (data: ProductAttributeGeolocationData | null) => void) =>
   async (code: string) => {
     const templateCode = code.split("#")[0];
 
@@ -30,7 +30,7 @@ export default function LiveGeolocation({
   addressClass: string;
   mapContainerClass: string;
 }) {
-  const [data, setData] = useState<ProductAttributeGeolocationData[] | null>(
+  const [data, setData] = useState<ProductAttributeGeolocationData | null>(
     null
   );
 
@@ -60,10 +60,10 @@ export default function LiveGeolocation({
 
   return (
     <div className={containerClass}>
-      <span className={addressClass}>{data[0].address}</span>
+      <span className={addressClass}>{data.address}</span>
       <Map
-        lat={data[0].lat}
-        lon={data[0].lon}
+        lat={data.lat}
+        lon={data.lon}
         mapContainerClass={mapContainerClass}
       />
     </div>

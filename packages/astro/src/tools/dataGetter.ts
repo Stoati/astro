@@ -10,6 +10,9 @@ export const findTextAttribute = (
   const found = findAttribute(element, templateAttributeCode);
 
   if (!found) {
+    console.error(
+      "Stoati: Attribute with code " + templateAttributeCode + " not found"
+    );
     return null;
   }
 
@@ -161,6 +164,7 @@ export const convertToMarkdownData = (
     const localizedValue = parseResult.data.find(
       (item) => item.locale === locale
     );
+
     if (localizedValue) {
       return {
         ...data,
@@ -247,11 +251,7 @@ export const convertToGeolocationData = (data: ProductAttribute) => {
     return null;
   }
 
-  console.log(data);
-
-  const parseResult = z
-    .array(ProductAttributeGeolocationData)
-    .safeParse(data.data);
+  const parseResult = ProductAttributeGeolocationData.safeParse(data.data);
 
   if (parseResult.success) {
     return parseResult.data;

@@ -2,8 +2,7 @@
 import { findMarkdownAttribute } from "../../tools/dataGetter";
 import stoatiDecode from "../../tools/decodeFullCode";
 import getElement from "../../tools/getElement";
-import ReactMarkdown from "react-markdown";
-
+import ReactMarkdown from "./ReactMarkdown";
 const { code } = Astro.props;
 
 const { templateCode, templateAttributeCode } = stoatiDecode(code);
@@ -11,6 +10,9 @@ const { templateCode, templateAttributeCode } = stoatiDecode(code);
 const data = await getElement(templateCode);
 
 const value = findMarkdownAttribute(data[0], templateAttributeCode);
+console.log(value?.data.markdown);
 ---
 
-<p class="prose"><ReactMarkdown>{value?.data.markdown ?? ""}</ReactMarkdown></p>
+<p class="prose">
+  <ReactMarkdown client:only="react" value={value?.data.markdown ?? ""} />
+</p>

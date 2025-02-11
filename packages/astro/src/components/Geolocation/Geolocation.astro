@@ -24,10 +24,10 @@ const geolocation = findGeolocationData(element[0], "location");
 {
   geolocation ? (
     <div class={containerClass}>
-      <span class={addressClass}>{geolocation[0].address}</span>
+      <span class={addressClass}>{geolocation.address}</span>
       <Map
-        lat={geolocation[0].lat}
-        lon={geolocation[0].lon}
+        lat={geolocation.lat}
+        lon={geolocation.lon}
         mapContainerClass={mapContainerClass}
         client:only="react"
       />
